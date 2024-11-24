@@ -71,44 +71,54 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-    /* Background styles for the entire sections */
-    .section {
+    /* General styles */
+    body {
+        background-color: #1e1e1e;
+        color: white;
+    }
+
+    /* Section styles */
+    .section-container {
         background-color: #2c2c2c;
         padding: 20px;
         border-radius: 15px;
-        margin: 10px 0;
+        margin: 10px;
     }
-    .section-header {
+
+    .section-title {
         font-size: 20px;
         font-weight: bold;
-        color: white;
         margin-bottom: 10px;
     }
-    .dark-gray-bg {
-        color: white;
+
+    .content-item {
+        font-size: 16px;
+        margin-bottom: 5px;
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-st.markdown("<h1 style='text-align: center; color: white;'>Seleccionador de Tràmits</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>Seleccionador de Tràmits</h1>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([1, 3])
 
 with col1:
-    st.markdown('<div class="section">', unsafe_allow_html=True)
-    st.markdown('<div class="section-header">Historial de Cerca</div>', unsafe_allow_html=True)
+    # Wrap the entire column in a container with background
+    st.markdown('<div class="section-container">', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">Historial de Cerca</div>', unsafe_allow_html=True)
     if st.session_state.searched_tramits:
         for tramit in reversed(st.session_state.searched_tramits):
-            st.write(f"<span class='dark-gray-bg'>{tramit}</span>", unsafe_allow_html=True)
+            st.markdown(f'<div class="content-item">{tramit}</div>', unsafe_allow_html=True)
     else:
-        st.write('<span class="dark-gray-bg">Cap tràmit cercat.</span>', unsafe_allow_html=True)
+        st.markdown('<div class="content-item">Cap tràmit cercat.</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:
-    st.markdown('<div class="section">', unsafe_allow_html=True)
-    st.markdown('<div class="section-header">Selecciona un Tràmit</div>', unsafe_allow_html=True)
+    # Wrap the entire column in a container with background
+    st.markdown('<div class="section-container">', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">Selecciona un Tràmit</div>', unsafe_allow_html=True)
     options = ['Selecciona un Tràmit'] + tramits_df['Titol'].tolist()
     st.selectbox('Selecciona un Tràmit', options, key='tramit_input_title', on_change=on_select_change)
 
