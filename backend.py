@@ -1,3 +1,9 @@
+%pip install streamlit
+%pip install tensorflow
+%pip install pandas
+%pip install openai
+%pip install keras
+
 import tensorflow as tf
 from keras.utils import pad_sequences
 import pandas as pd
