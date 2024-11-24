@@ -32,7 +32,7 @@ class TokenAndPositionEmbedding(tf.keras.layers.Layer):
 
 
 # ------------------ Modelo Preentrenado ------------------
-def cargar_modelo(ruta_modelo="/Users/alexlatorre/Documents/GitHub/local_ecityclic/ecityclic/model/modelo_transformer_tramites.h5"):
+def cargar_modelo(ruta_modelo="modelo_transformer_tramites.h5"):
     """Carga el modelo Transformer preentrenado."""
     model = tf.keras.models.load_model(
         ruta_modelo,
@@ -73,11 +73,11 @@ def predecir_tramite(raw_input_sequence, tramits_csv, max_seq_len, model):
 def call_function(tramit_input):
 
     # Cargar el modelo preentrenado
-    model = cargar_modelo("/Users/alexlatorre/Documents/GitHub/local_ecityclic/ecityclic/model/modelo_transformer_tramites.h5")
+    model = cargar_modelo("modelo_transformer_tramites.h5")
 
     # Realizar una predicción
     raw_input_sequence = tramit_input  # Entrada ejemplo
-    tramits_csv = "/Users/alexlatorre/Documents/GitHub/local_ecityclic/data/tramits.csv"  # Ruta al archivo tramits.csv
+    tramits_csv = "tramits.csv"  # Ruta al archivo tramits.csv
     max_seq_len = 20  # Longitud máxima de secuencias
 
     # Realizar la predicción 
