@@ -1,9 +1,3 @@
-%pip install streamlit
-%pip install tensorflow
-%pip install pandas
-%pip install openai
-%pip install keras
-
 from backend import call_function
 import streamlit as st
 import pandas as pd
