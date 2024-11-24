@@ -85,3 +85,18 @@ with col2:
     if st.session_state.result:
         for r in st.session_state.result:
             st.button(r, on_click=on_button_click, args=(r,))
+
+# Footer
+st.markdown(
+    """
+    <hr style="margin-top: 50px; margin-bottom: 20px;">
+    <div style="text-align: center; font-size: 14px; color: grey;">
+        <p>
+            <strong>Projecte Seleccionador de Tràmits</strong><br>
+            Desenvolupat per: <span style="color: black;">[Nom del Creador 1]</span> i <span style="color: black;">[Nom del Creador 2]</span><br>
+            Aquest projecte facilita la cerca i gestió dels tràmits administratius de forma eficient i interactiva.
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
