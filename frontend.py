@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 
 # Load the CSV file
-tramits_df = pd.read_csv('/Users/alexlatorre/Documents/GitHub/local_ecityclic/data/tramits.csv')
+tramits_df = pd.read_csv('tramits.csv')
 
 # Create a dictionary to map Titol to Sequence
 titol_to_sequence = dict(zip(tramits_df['Titol'], tramits_df['Sequence']))
