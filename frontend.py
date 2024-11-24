@@ -67,7 +67,22 @@ if 'result' not in st.session_state:
 
 # Layout
 st.set_page_config(layout="wide")
-st.title("Seleccionador de Tràmits")
+
+# Centered and styled title
+st.markdown(
+    """
+    <div style="
+        text-align: center; 
+        font-size: 36px; 
+        font-weight: bold; 
+        color: #333; 
+        margin-bottom: 20px;
+    ">
+        Seleccionador de Tràmits
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 col1, col2 = st.columns([1, 3])
 
