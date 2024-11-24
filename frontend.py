@@ -15,7 +15,23 @@ def on_select_change():
         return
     tramit_row = tramits_df[tramits_df['Titol'] == tramit_input_title]
     if not tramit_row['Vigent'].values[0]:
-        st.write("Aquest tramit no esta disponible ara mateix")
+        st.markdown(
+            """
+            <div style="
+                background-color: rgba(255, 255, 0, 0.1); 
+                border-radius: 10px; 
+                padding: 10px; 
+                display: flex; 
+                justify-content: center; 
+                align-items: center; 
+                width: 100%;
+                margin: 10px 0;
+            ">
+                ⚠️ <span style="margin-left: 10px;">Aquest tramit no esta disponible ara mateix</span>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
     else:
         # Add the selected tramit to the list of previously searched Tramits
         if tramit_input_title not in st.session_state.searched_tramits:
