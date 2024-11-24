@@ -93,7 +93,7 @@ st.markdown(
     <div style="text-align: center; font-size: 14px; color: grey;">
         <p>
             <strong>Projecte Seleccionador de Tràmits</strong><br>
-            Desenvolupat per l'equip <span style="color: black;">Porks in Paris</span> per la LleidaHack 2024.<br>
+            Desenvolupat per l'equip <span style="color: grey;">Porks in Paris</span> per la LleidaHack 2024.<br>
             Aquest projecte facilita la cerca i gestió dels tràmits administratius de forma eficient i interactiva.
         </p>
     </div>
