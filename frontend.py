@@ -68,22 +68,55 @@ if 'result' not in st.session_state:
 # Layout
 st.set_page_config(layout="wide")
 
+st.markdown(
+    """
+    <style>
+    /* Background styles for the entire sections */
+    .section {
+        background-color: #2c2c2c;
+        padding: 20px;
+        border-radius: 15px;
+        margin: 10px 0;
+    }
+    .section-header {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 10px;
+    }
+    .dark-gray-bg {
+        color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.markdown("<h1 style='text-align: center; color: white;'>Seleccionador de Tràmits</h1>", unsafe_allow_html=True)
+
 col1, col2 = st.columns([1, 3])
 
 with col1:
-    st.header("Historial de Cerca")
-    for tramit in reversed(st.session_state.searched_tramits):
-        st.write(tramit)
+    st.markdown('<div class="section">', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">Historial de Cerca</div>', unsafe_allow_html=True)
+    if st.session_state.searched_tramits:
+        for tramit in reversed(st.session_state.searched_tramits):
+            st.write(f"<span class='dark-gray-bg'>{tramit}</span>", unsafe_allow_html=True)
+    else:
+        st.write('<span class="dark-gray-bg">Cap tràmit cercat.</span>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:
-    st.header("Selecciona un Tràmit")
+    st.markdown('<div class="section">', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">Selecciona un Tràmit</div>', unsafe_allow_html=True)
     options = ['Selecciona un Tràmit'] + tramits_df['Titol'].tolist()
     st.selectbox('Selecciona un Tràmit', options, key='tramit_input_title', on_change=on_select_change)
-    
+
     st.caption("Suggerencies")
     if st.session_state.result:
         for r in st.session_state.result:
             st.button(r, on_click=on_button_click, args=(r,))
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # Footer
 st.markdown(
