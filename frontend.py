@@ -27,7 +27,7 @@ def on_select_change():
                 width: 100%;
                 margin: 10px 0;
             ">
-                ⚠️ <span style="margin-left: 10px;">Aquest tramit no esta disponible ara mateix</span>
+                ⚠️ <span style="margin-left: 10px;">Aquest tràmit no esta disponible ara mateix</span>
             </div>
             """,
             unsafe_allow_html=True
