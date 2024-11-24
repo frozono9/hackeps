@@ -68,65 +68,22 @@ if 'result' not in st.session_state:
 # Layout
 st.set_page_config(layout="wide")
 
-st.markdown(
-    """
-    <style>
-    /* General styles */
-    body {
-        background-color: #1e1e1e;
-        color: white;
-    }
-
-    /* Section styles */
-    .section-container {
-        background-color: #2c2c2c;
-        padding: 20px;
-        border-radius: 15px;
-        margin: 10px;
-    }
-
-    .section-title {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .content-item {
-        font-size: 16px;
-        margin-bottom: 5px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-st.markdown("<h1 style='text-align: center;'>Seleccionador de Tràmits</h1>", unsafe_allow_html=True)
-
 col1, col2 = st.columns([1, 3])
 
 with col1:
-    # Wrap the entire column in a container with background
-    st.markdown('<div class="section-container">', unsafe_allow_html=True)
-    st.markdown('<div class="section-title">Historial de Cerca</div>', unsafe_allow_html=True)
-    if st.session_state.searched_tramits:
-        for tramit in reversed(st.session_state.searched_tramits):
-            st.markdown(f'<div class="content-item">{tramit}</div>', unsafe_allow_html=True)
-    else:
-        st.markdown('<div class="content-item">Cap tràmit cercat.</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.header("Historial de Cerca")
+    for tramit in reversed(st.session_state.searched_tramits):
+        st.write(tramit)
 
 with col2:
-    # Wrap the entire column in a container with background
-    st.markdown('<div class="section-container">', unsafe_allow_html=True)
-    st.markdown('<div class="section-title">Selecciona un Tràmit</div>', unsafe_allow_html=True)
+    st.header("Selecciona un Tràmit")
     options = ['Selecciona un Tràmit'] + tramits_df['Titol'].tolist()
     st.selectbox('Selecciona un Tràmit', options, key='tramit_input_title', on_change=on_select_change)
-
+    
     st.caption("Suggerencies")
     if st.session_state.result:
         for r in st.session_state.result:
             st.button(r, on_click=on_button_click, args=(r,))
-    st.markdown('</div>', unsafe_allow_html=True)
 
 # Footer
 st.markdown(
