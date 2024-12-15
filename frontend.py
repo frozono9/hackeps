@@ -1,4 +1,4 @@
-from backend import call_function
+from .backend import call_function
 import streamlit as st
 import pandas as pd
 
